@@ -1,0 +1,10 @@
+public/
+
+.DS_Store
+.idea/
+*.swp
+*.swo
+
+.vscode/
+
+.cache/
