@@ -1,0 +1,27 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>{{ .Site.Title }}</title>
+
+  <meta name="description" content="{{ .Site.Params.description }}">
+
+  {{ if .Site.Params.social.opengraph }}
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <!--TODO: Mettre l'images pour l'opengraph -->
+  {{ end }}
+
+  {{ if .Site.Params.social.twitter_cards }}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ .Site.Title }}">
+    <meta name="twitter:description" content="{{ .Site.Params.description }}">
+    <!--TODO: Mettre l'images pour la twitter card -->
+  {{ end }}
+
+  {{ $styles := resources.Get "scss/application.scss" | resources.ToCSS | resources.Minify }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+</head>

@@ -1,0 +1,32 @@
+baseURL = "http://localhost:1313"
+languageCode = 'fr-FR'
+title = 'Nehémia Telusma • Portfolio'
+theme = "Street"
+enableRobotsTXT = true
+canonifyURLs = true
+
+# Paramètres SEO
+[params]
+description = "Je suis Nehémia Telusma, développeuse web spécialisée en création de sites vitrine et en design UX/UI."
+author = "Nehémia Telusma"
+
+[params.social]
+  opengraph = true
+  twitter_cards = true
+
+# Formats de sortie
+[outputs]
+  home = ["HTML"]
+
+# Paramètres de performance
+minify = true
+ignoreCache = true
+
+# Configuration des services de minification d'images et d'assets
+[imaging]
+  quality = 75
+
+[asset]
+  minify = true
+  fingerprint = true
+  enable = true
