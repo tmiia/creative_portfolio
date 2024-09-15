@@ -1,0 +1,51 @@
+// Colors
+$primary-color: #141009;
+$secondary-color: #F5F3F1;
+
+$background-light: #F5F3F1;
+$background-dark: #141009;
+
+$text-color: #141009;
+$text-light-color: #F5F3F1;
+
+// Fonts
+$f-family-primary: 'Poppins', sans-serif;
+$f-family-secondary: 'Timegoing', sans-serif;
+
+// Fonts Size
+$f-size-base: pxToRem(16);
+$f-size-xxs: pxToRem(10);
+$f-size-xs: pxToRem(12);
+$f-size-sm: pxToRem(14);
+$f-size-lg: pxToRem(20);
+$f-size-xl: pxToRem(24);
+$f-size-xxl: pxToRem(32);
+$f-size-xxl: pxToRem(48);
+$f-size-xxxl: pxToRem(64);
+$f-size-huge: pxToRem(192);
+
+// Spacing
+$spacing-xxs: pxToRem(4);
+$spacing-xs: pxToRem(8);
+$spacing-sm: pxToRem(12);
+$spacing-md: pxToRem(16);
+$spacing-lg: pxToRem(20);
+$spacing-xl: pxToRem(24);
+$spacing-xxl: pxToRem(32);
+$spacing-xxxl: pxToRem(48);
+$spacing-huge: pxToRem(64);
+
+// Largeurs de conteneur
+$container-width: 1200px;
+$container-max-width: 100%;
+
+// Z-index
+$z-index-low: 10;
+$z-index-medium: 50;
+$z-index-high: 100;
+
+// Breakpoints pour responsive design
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;

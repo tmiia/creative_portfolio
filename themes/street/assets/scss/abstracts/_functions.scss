@@ -1,0 +1,7 @@
+// PXTOREM
+$base-size: 16;
+
+@function pxToRem($value) {
+  $remValue: ($value / $base-size) + rem;
+  @return $remValue;
+}
