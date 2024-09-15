@@ -1,0 +1,122 @@
+.home{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: $spacing-huge;
+  flex: 1;
+
+
+  &__content-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: $spacing-xl 0 $spacing-xxl 0;
+    text-align: center;
+    font-family: $f-family-primary;
+
+    .home__titles{
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+
+    .special-title{
+      font-size: $f-size-huge;
+      line-height: $line-h-special;
+      font-family: $f-family-secondary;
+      font-weight: 400;
+      transform: rotate(355deg);
+      text-shadow:
+      pxToRem(0) pxToRem(-9) 0 $background-light,
+      pxToRem(10) pxToRem(0) 0 $background-light,
+      pxToRem(0) pxToRem(10) 0 $background-light,
+      pxToRem(-5) pxToRem(0) 0 $background-light;
+    }
+
+    .special-subtitle{
+      z-index: $z-index-high;
+      position: relative;
+      font-size: $f-size-xxxl;
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 0.9em;
+
+
+      &::before{
+        z-index: -1;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $background-light;
+      }
+    }
+
+    .home__content{
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .job-details{
+      span{
+        font-weight: 300;
+        font-size: $f-size-lg;
+        text-transform: uppercase;
+      }
+    }
+
+    .name{
+      display: flex;
+      flex-direction: column;
+      margin-top: auto;
+
+      .firstname, .lastname{
+        text-transform: uppercase;
+      }
+
+      .firstname{
+        font-size: $f-size-md;
+        font-weight: 500;
+      }
+
+      .lastname{
+        font-size: $f-size-xl;
+        font-weight: 800;
+      }
+    }
+  }
+
+  &__side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: fit-content;
+    padding: $spacing-huge 0;
+    background-color: $background-light;
+
+    .bottom {
+      writing-mode: vertical-rl;
+
+      .last-job {
+        transform: rotate(180deg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $spacing-sm;
+
+        p {
+          font-size: $f-size-sm;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

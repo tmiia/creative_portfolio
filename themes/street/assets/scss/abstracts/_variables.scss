@@ -17,12 +17,16 @@ $f-size-base: pxToRem(16);
 $f-size-xxs: pxToRem(10);
 $f-size-xs: pxToRem(12);
 $f-size-sm: pxToRem(14);
+$f-size-md: pxToRem(18);
 $f-size-lg: pxToRem(20);
 $f-size-xl: pxToRem(24);
 $f-size-xxl: pxToRem(32);
 $f-size-xxl: pxToRem(48);
 $f-size-xxxl: pxToRem(64);
-$f-size-huge: pxToRem(192);
+$f-size-huge: pxToRem(160);
+
+// Line Height
+$line-h-special: 0.9em;
 
 // Spacing
 $spacing-xxs: pxToRem(4);

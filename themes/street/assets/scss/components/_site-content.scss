@@ -1,0 +1,18 @@
+.site-content{
+  z-index: $z-index-medium;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+
+  min-height: $full-v-h;
+  min-width: $full-v-w;
+
+  &__section{
+    display: none !important;
+
+    &.active{
+      display: flex !important;
+    }
+  }
+}
