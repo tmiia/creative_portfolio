@@ -35,7 +35,11 @@ $spacing-xxl: pxToRem(32);
 $spacing-xxxl: pxToRem(48);
 $spacing-huge: pxToRem(64);
 
-// Largeurs de conteneur
+// Size
+$full-v-h: 100vh;
+$full-v-w: 100vw;
+
+// Container Size
 $container-width: 1200px;
 $container-max-width: 100%;
 
@@ -44,8 +48,11 @@ $z-index-low: 10;
 $z-index-medium: 50;
 $z-index-high: 100;
 
-// Breakpoints pour responsive design
+// Breakpoints
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
+
+// Ease
+$ease-gentle: cubic-bezier(0.25, 0.1, 0.25, 1.0);

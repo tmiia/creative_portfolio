@@ -1,1 +1,35 @@
-// Focus component
+$border-size : pxToRem(3);
+
+.focus{
+  &__container{
+    display: flex;
+    justify-content: center;
+
+    min-height: $full-v-h;
+    min-width: $full-v-w;
+    padding: $spacing-huge;
+  }
+
+  &__area{
+    position: relative;
+    flex: 1;
+    border: $border-size solid $primary-color;
+    transform-origin: center;
+    transition: .8s $ease-gentle;
+
+    &::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -$border-size;
+      width: calc(100% + #{$border-size} * 2);
+      height: pxToRem(150);
+      background-color: $background-light;
+    }
+
+    &.active{
+      flex: none;
+      width: calc(#{$full-v-w} / 3);
+    }
+  }
+}
