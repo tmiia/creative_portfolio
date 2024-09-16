@@ -1,0 +1,51 @@
+.outer{
+  overflow-x: hidden;
+}
+
+.slider{
+  display: flex;
+  width: 200vw;
+
+  section{
+    height: 100vh;
+    width: 50%;
+    padding: $spacing-huge;
+
+    .inner{
+      position: relative;
+      display: flex;
+      height: 100%;
+
+      .content{
+        background-color: $background-light;
+      }
+    }
+
+    &:nth-child(odd) .inner {
+      align-items: start;
+      transform: translate($spacing-xxxl, -$spacing-xl);
+    }
+
+    &:nth-child(even) .inner {
+      align-items: end;
+      transform: translate($spacing-xxl, -$spacing-huge);
+    }
+  }
+}
+
+
+
+
+
+.canvas-container {
+  z-index: -1;
+  width: 100%;
+  height: 250px;
+  position: relative;
+  background-color: $background-dark;
+  outline: pxToRem(11) solid $background-light;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,13 @@
+.project{
+  &__title{
+    font-size: $f-size-xxxl;
+    font-family: $f-family-secondary;
+    transform: rotate(357deg);
+    transform-origin: left;
+    line-height: 1em;
+    background-color: $background-light;
+    width: calc(100% + #{$spacing-md});
+    padding: $spacing-sm $spacing-lg 0 0;
+
+  }
+}

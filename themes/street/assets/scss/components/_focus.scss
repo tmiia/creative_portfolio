@@ -2,6 +2,10 @@ $border-size : pxToRem(3);
 
 .focus{
   &__container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    
     z-index: $z-index-low;
     display: flex;
     justify-content: center;
