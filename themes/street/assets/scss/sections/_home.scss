@@ -17,6 +17,7 @@
     .home__titles{
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: $spacing-sm;
     }
 
@@ -40,6 +41,7 @@
       font-weight: 600;
       text-transform: uppercase;
       line-height: 0.9em;
+      width: fit-content;
 
 
       &::before{
