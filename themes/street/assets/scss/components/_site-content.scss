@@ -12,5 +12,9 @@
     &.active{
       display: flex;
     }
+
+    &.portfolio{
+      transform: translateY(-8em);
+    }
   }
 }
