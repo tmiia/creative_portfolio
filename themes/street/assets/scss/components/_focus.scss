@@ -5,8 +5,8 @@ $border-size : pxToRem(3);
     position: fixed;
     top: 0;
     left: 0;
-    
-    z-index: $z-index-low;
+
+    z-index: -1;
     display: flex;
     justify-content: center;
 
@@ -17,7 +17,7 @@ $border-size : pxToRem(3);
 
   &__area{
     position: relative;
-    flex: 1;
+    width: calc(#{$full-v-w} - 64px * 2);
     border: $border-size solid $primary-color;
     transform-origin: center;
     transition: .8s $ease-gentle;
@@ -26,15 +26,17 @@ $border-size : pxToRem(3);
       content: "";
       position: absolute;
       top: 65%;
-      left: -$border-size;
-      width: calc(100% + #{$border-size} * 2);
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% + #{$border-size} * 9);
       height: pxToRem(150);
       background-color: $background-light;
     }
 
     &.active{
-      flex: none;
-      width: calc(#{$full-v-w} / 3);
+      border-left: calc(#{$border-size} * 3) solid $primary-color;
+      border-right: calc(#{$border-size} * 3) solid $primary-color;
+      transform: scaleX(0.33);
     }
   }
 }

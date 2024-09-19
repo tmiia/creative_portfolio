@@ -1,47 +1,58 @@
 gsap.registerPlugin(ScrollTrigger);
 
-const slider = document.querySelector('.slider');
-const sections = gsap.utils.toArray(".slider section");
+window.onload = () => {
 
-let tl = gsap.timeline({
-  defaults: {
-    ease: "none",
-  },
-  scrollTrigger: {
-    trigger: slider,
-    pin: true,
-    scrub: 2,
-    end : () => "+=" + slider.offsetWidth
+  toggleFocus();
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+  })
+
+  function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
   }
-})
 
-tl.to(slider, {
-      xPercent: -70,
-})
+  requestAnimationFrame(raf)
 
-sections.forEach((stop, index) => {
-  tl
-    .from(stop.querySelector('.content'), {
-      xPercent: 20,
-      opacity: 0,
-      scrollTrigger: {
-        trigger: stop.querySelector('.content'),
-        start: "left center",
-        end: "center center",
-        containerAnimation: tl,
-        scrub: true
-      }
+  const slider = document.querySelector('.slider');
+  const sections = gsap.utils.toArray('.slider section');
 
-    })
-})
+  gsap.to(sections, {
+    xPercent: -130 * (sections.length - 1),
+    ease: "none",
+    scrollTrigger: {
+      trigger: '.portfolio',
+      start: "top top",
+      pin: true,
+      scrub: 2,
+      snap: 1 / (sections.length - 1),
+      end: () => "+=" + slider.offsetWidth,
+      onEnter: toggleFocus,
+    }
+  });
 
-// const lenis = new Lenis()
+  ScrollTrigger.create({
+    trigger: '.home',
+    start: "bottom center",
+    onLeaveBack: toggleFocus
+  });
 
-// function raf(time) {
-//   lenis.raf(time)
-//   requestAnimationFrame(raf)
-// }
+  lenis.on('scroll', ScrollTrigger.update);
 
-// requestAnimationFrame(raf)
+};
 
-// lenis.on('scroll', ScrollTrigger.update);
+
+function toggleFocus() {
+  const focus = document.querySelector(".focus__area");
+
+  focus.classList.toggle('active');
+}
