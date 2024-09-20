@@ -1,7 +1,7 @@
 # theme.toml template for a Hugo theme
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
-name = "Street"
+name = "street"
 license = "MIT"
 description = "Portfolio de Nehémia Telusma"
 tags = ["portfolio", "creative-website"]
