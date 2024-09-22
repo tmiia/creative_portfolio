@@ -37,53 +37,19 @@
     <section class="portfolio site-content__section active" id="portfolio">
       <div class="outer">
         <div class="slider">
+          {{ range where .Site.RegularPages "Section" "projects" }}
           <section>
             <div class="inner">
               <div class="content project">
                 <div class="canvas-container"></div>
                 <div class="text-content">
-                  <h2 class="project__title">Projet 1 • Aurora</h2>
-                  <p class="project__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio nulla doloribus id delectus quidem nobis, illum sint voluptatum qui odit culpa.</p>
+                  <h2 class="project__title">{{ .Title }}</h2>
+                  <p class="project__description">{{ .Params.description }}</p>
                 </div>
               </div>
             </div>
           </section>
-
-          <section>
-            <div class="inner">
-              <div class="content project">
-                <div class="canvas-container"></div>
-                <div class="text-content">
-                  <h2 class="project__title">Projet 2 • Blessing</h2>
-                  <p class="project__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio nulla doloribus id delectus quidem nobis, illum sint voluptatum qui odit culpa.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <div class="inner">
-              <div class="content project">
-                <div class="canvas-container"></div>
-                <div class="text-content">
-                  <h2 class="project__title">Projet 3 • Hope</h2>
-                  <p class="project__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio nulla doloribus id delectus quidem nobis, illum sint voluptatum qui odit culpa.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <div class="inner">
-              <div class="content project">
-                <div class="canvas-container"></div>
-                <div class="text-content">
-                  <h2 class="project__title">Projet 4 • Make Art</h2>
-                  <p class="project__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio nulla doloribus id delectus quidem nobis, illum sint voluptatum qui odit culpa.</p>
-                </div>
-              </div>
-            </div>
-          </section>
+          {{ end }}
         </div>
       </div>
     </section>
