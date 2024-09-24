@@ -55,7 +55,7 @@ window.onload = () => {
   const canvasHeight = (canvasWidth / 16) * 9;
   const targets = document.querySelectorAll('.canvas-container');
 
-  targets.forEach(async (target, index) => {
+  targets.forEach(async target => {
 
     let app = new PIXI.Application({
         width: canvasWidth,
@@ -64,7 +64,7 @@ window.onload = () => {
 
     target.appendChild(app.view);
 
-    const sprite = createSprite(index);
+    const sprite = createSprite(target);
 
     sprite.width = canvasWidth;
     sprite.height = canvasHeight;
@@ -126,8 +126,8 @@ function toggleFocus() {
 
 // Canvas Anim
 
-function createSprite(index) {
-  let imagePath = `/images/uploads/project_${index + 1}.webp`;
+function createSprite(target) {
+  let imagePath = target.dataset.image;
   return PIXI.Sprite.from(imagePath);
 }
 
