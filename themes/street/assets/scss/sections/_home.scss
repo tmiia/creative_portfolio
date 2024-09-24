@@ -95,28 +95,55 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     position: fixed;
-    left: 0;
+    left: $spacing-lg;
     top: 0;
     bottom: 0;
     width: fit-content;
     padding: $spacing-huge 0;
-    background-color: $background-light;
+
+    .top{
+      writing-mode: vertical-rl;
+      .last-job {
+        .logo{
+          transform: rotate(180deg);
+          width: pxToRem(37);
+          height: pxToRem(32);
+        }
+      }
+    }
+
+    .middle{
+      width: $f-size-md;
+    }
 
     .bottom {
       writing-mode: vertical-rl;
 
       .last-job {
-        transform: rotate(180deg);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: $spacing-sm;
-
-        p {
-          font-size: $f-size-sm;
-          text-transform: uppercase;
+        .logo{
+          height: 18px;
+          transform: rotate(-90deg);
         }
+      }
+    }
+    .last-job {
+      transform: rotate(180deg);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: $spacing-sm;
+
+      p {
+        font-size: $f-size-xs;
+        font-weight: 300;
+        text-transform: uppercase;
+        height: 28ch;
+      }
+
+      .logo{
+        display: none;
       }
     }
   }
