@@ -22,6 +22,8 @@
     <!--TODO: Mettre l'images pour la twitter card -->
   {{ end }}
 
+  <link rel="icon" type="image/x-icon" href="/media/favicon.ico">
+
   {{ $styles := resources.Get "scss/application.scss" | resources.ToCSS | resources.Minify }}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 
@@ -34,8 +36,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/pixi.js-legacy@7.4.2/dist/pixi-legacy.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pixi-filters@latest/dist/browser/pixi-filters.min.js"></script>
-
-
 
   {{ $js := resources.Get "js/application.js" | resources.Minify | fingerprint }}
   <script src="{{ $js.Permalink }}" defer></script>
