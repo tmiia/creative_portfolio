@@ -108,32 +108,15 @@
     width: fit-content;
     padding: $spacing-huge 0;
 
-    .top{
-      writing-mode: vertical-rl;
-      .last-job {
-        .logo{
-          transform: rotate(180deg);
-          width: pxToRem(37);
-          height: pxToRem(32);
-        }
-      }
-    }
-
     .middle{
       width: $f-size-md;
     }
 
-    .bottom {
+    .top, .bottom {
       writing-mode: vertical-rl;
-
-      .last-job {
-        .logo{
-          height: 18px;
-          transform: rotate(-90deg);
-        }
-      }
     }
-    .last-job {
+    
+    .cv {
       transform: rotate(180deg);
       display: flex;
       flex-direction: row;
@@ -145,10 +128,6 @@
         font-weight: 300;
         text-transform: uppercase;
         height: 28ch;
-      }
-
-      .logo{
-        display: none;
       }
     }
   }
