@@ -56,67 +56,75 @@ window.onload = () => {
   const targets = document.querySelectorAll('.canvas-container');
 
   targets.forEach(async target => {
+      let app = new PIXI.Application({
+          width: canvasWidth,
+          height: canvasHeight
+      });
 
-    let app = new PIXI.Application({
-        width: canvasWidth,
-        height: canvasHeight
-    });
+      target.appendChild(app.view);
 
-    target.appendChild(app.view);
+      const sprite = createSprite(target);
+      sprite.width = canvasWidth;
+      sprite.height = canvasHeight;
 
-    const sprite = createSprite(target);
+      const {oldFilmFilter, shockWaveFilter, bnwFilter} = createFilters();
+      sprite.filters = [oldFilmFilter, shockWaveFilter, bnwFilter];
+      app.stage.addChild(sprite);
 
-    sprite.width = canvasWidth;
-    sprite.height = canvasHeight;
+      const minSeed = 0.2;
+      const maxSeed = 1;
+      let seedChangeInterval = 10;
+      let frameCounter = 0;
+      let isHovered = false;
 
-    const {oldFilmFilter, shockWaveFilter} = createFilters();
-    sprite.filters = [oldFilmFilter, shockWaveFilter];
-    app.stage.addChild(sprite);
+      target.addEventListener('mouseenter', () => {
+        isHovered = true;
+      });
 
-    const minSeed = 0.2;
-    const maxSeed = 1;
-    let seedChangeInterval = 10;
-    let frameCounter = 0;
-    let isHovered = false;
+      target.addEventListener('mouseleave', () => {
+        isHovered = false;
+      });
 
-    target.addEventListener('mouseenter', () => {
-      shockWaveFilter.amplitude = 10;
-      shockWaveFilter.wavelength = 450;
-      shockWaveFilter.brightness = 1.0
-      shockWaveFilter.radius = -1;
-      shockWaveFilter.speed = 500;
-      isHovered = true;
-    });
+      app.ticker.add(() => {
+          frameCounter++;
 
-    target.addEventListener('mouseleave', () => {
-      resetShockwaveFilter(shockWaveFilter)
-      isHovered = false;
-      oldFilmFilter.sepia = 0.4;
-    });
-
-    app.ticker.add((delta) => {
-      frameCounter++;
-
-      if (frameCounter % seedChangeInterval === 0) {
-          oldFilmFilter.seed = minSeed + Math.random() * (maxSeed - minSeed);
-      }
-
-      if (isHovered) {
-          shockWaveFilter.time += delta * 0.02;
-          oldFilmFilter.sepia -= delta * 0.015;
-          oldFilmFilter.sepia = Math.max(oldFilmFilter.sepia, 0);
-          oldFilmFilter.noiseSize = 0;
-
-          if (shockWaveFilter.time > 5) {
-              shockWaveFilter.time = 0;
+          if (frameCounter % seedChangeInterval === 0) {
+              oldFilmFilter.seed = minSeed + Math.random() * (maxSeed - minSeed);
           }
-      } else {
-          oldFilmFilter.sepia += delta * 0.015;
-          oldFilmFilter.sepia = Math.min(oldFilmFilter.sepia, 0.4);
-      }
+
+          if (isHovered) {
+            gsap.to(shockWaveFilter, {
+                amplitude: 10,
+                wavelength: 450,
+                brightness: 1.0,
+                speed: 300,
+                time: 2,
+                duration: 2,
+            });
+
+            gsap.to(bnwFilter, {
+                saturation: 0,
+                duration: 0.7,
+                ease: "power4.out"
+            });
+
+          } else {
+              gsap.to(shockWaveFilter, {
+                speed: 300,
+                brightness: 1.0,
+                time: -1,
+                duration: 2
+              });
+
+              gsap.to(bnwFilter, {
+                  saturation: -1,
+                  duration: 0.7,
+                  ease: "power4.out"
+              });
+          }
+      });
   });
 
-});
 
 };
 
@@ -136,38 +144,15 @@ function createSprite(target) {
   return PIXI.Sprite.from(imagePath);
 }
 
-function resetShockwaveFilter(shockWaveFilter) {
-  shockWaveFilter.amplitude = 0;
-  shockWaveFilter.wavelength = 0;
-  shockWaveFilter.brightness = 0;
-  shockWaveFilter.radius = 0;
-  shockWaveFilter.speed = 0;
-  shockWaveFilter.time = 0;
-}
-
-
 function createFilters() {
   const oldFilmFilter = new PIXI.filters.OldFilmFilter();
   oldFilmFilter.noiseSize = 2;
   oldFilmFilter.noise = 0;
-  oldFilmFilter.sepia = 0.4;
+  oldFilmFilter.sepia = -1;
 
   const shockWaveFilter = new PIXI.filters.ShockwaveFilter();
-  resetShockwaveFilter(shockWaveFilter)
-  return { oldFilmFilter, shockWaveFilter };
-}
 
-function setupHoverEffect(target, shockWaveFilter, oldFilmFilter) {
-  target.addEventListener('mouseenter', () => {
-      shockWaveFilter.amplitude = 10;
-      shockWaveFilter.wavelength = 450;
-      shockWaveFilter.brightness = 1.0;
-      shockWaveFilter.radius = -1;
-      shockWaveFilter.speed = 500;
-  });
+  const bnwFilter = new PIXI.filters.HslAdjustmentFilter();
 
-  target.addEventListener('mouseleave', () => {
-      resetShockwaveFilter(shockWaveFilter);
-      oldFilmFilter.sepia = 0.4;
-  });
+  return { oldFilmFilter, shockWaveFilter, bnwFilter };
 }
