@@ -13,31 +13,30 @@ $f-family-primary: 'Poppins', sans-serif;
 $f-family-secondary: 'Timegoing', sans-serif;
 
 // Fonts Size
-$f-size-base: pxToRem(16);
-$f-size-xxs: pxToRem(10);
-$f-size-xs: pxToRem(12);
-$f-size-sm: pxToRem(14);
-$f-size-md: pxToRem(18);
-$f-size-lg: pxToRem(20);
-$f-size-xl: pxToRem(24);
-$f-size-xxl: pxToRem(32);
-$f-size-xxl: pxToRem(48);
-$f-size-xxxl: pxToRem(64);
-$f-size-huge: pxToRem(160);
+$f-size-base: clamp(pxToRem(14), 2vw, pxToRem(16));
+$f-size-xxs: clamp(pxToRem(8), 1vw, pxToRem(10));
+$f-size-xs: clamp(pxToRem(10), 1.5vw, pxToRem(12));
+$f-size-sm: clamp(pxToRem(12), 2vw, pxToRem(14));
+$f-size-md: clamp(pxToRem(14), 2.5vw, pxToRem(18));
+$f-size-lg: clamp(pxToRem(16), 3vw, pxToRem(20));
+$f-size-xl: clamp(pxToRem(18), 4vw, pxToRem(24));
+$f-size-xxl: clamp(pxToRem(20), 5vw, pxToRem(32));
+$f-size-xxxl: clamp(pxToRem(24), 6vw, pxToRem(64));
+$f-size-huge: clamp(pxToRem(32), 10vw, pxToRem(160));
 
 // Line Height
 $line-h-special: 0.9em;
 
 // Spacing
-$spacing-xxs: pxToRem(4);
-$spacing-xs: pxToRem(8);
-$spacing-sm: pxToRem(12);
-$spacing-md: pxToRem(16);
-$spacing-lg: pxToRem(20);
-$spacing-xl: pxToRem(24);
-$spacing-xxl: pxToRem(32);
-$spacing-xxxl: pxToRem(48);
-$spacing-huge: pxToRem(64);
+$spacing-xxs: clamp(pxToRem(2), 0.5vw, pxToRem(4));
+$spacing-xs: clamp(pxToRem(4), 1vw, pxToRem(8));
+$spacing-sm: clamp(pxToRem(6), 1.5vw, pxToRem(12));
+$spacing-md: clamp(pxToRem(8), 2vw, pxToRem(16));
+$spacing-lg: clamp(pxToRem(10), 2.5vw, pxToRem(20));
+$spacing-xl: clamp(pxToRem(12), 3vw, pxToRem(24));
+$spacing-xxl: clamp(pxToRem(16), 4vw, pxToRem(32));
+$spacing-xxxl: clamp(pxToRem(24), 6vw, pxToRem(48));
+$spacing-huge: clamp(pxToRem(32), 8vw, pxToRem(64));
 
 // Size
 $full-v-h: 100vh;

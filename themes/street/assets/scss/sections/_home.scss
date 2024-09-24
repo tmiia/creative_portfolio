@@ -73,6 +73,7 @@
 
     .logo{
       margin-top: $spacing-xl;
+      width: clamp(pxToRem(14), 4vw, pxToRem(64));
     }
 
     .name{
@@ -115,7 +116,7 @@
     .top, .bottom {
       writing-mode: vertical-rl;
     }
-    
+
     .cv {
       transform: rotate(180deg);
       display: flex;

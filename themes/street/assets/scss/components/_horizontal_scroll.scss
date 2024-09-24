@@ -27,12 +27,12 @@
 
     &:nth-child(odd) .inner {
       align-items: start;
-      transform: translate($spacing-xxxl, -$spacing-xl);
+      transform: translate($spacing-xxxl, clamp(pxToRem(-12), -3vw, pxToRem(-24)));
     }
 
     &:nth-child(even) .inner {
       align-items: end;
-      transform: translate($spacing-xxl, -$spacing-huge);
+      transform: translate($spacing-xxl, clamp(pxToRem(-32), -8vw, pxToRem(-64)));
     }
   }
 }
