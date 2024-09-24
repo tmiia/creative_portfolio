@@ -95,21 +95,26 @@ window.onload = () => {
     });
 
     app.ticker.add((delta) => {
-        frameCounter++;
+      frameCounter++;
 
-        if (frameCounter % seedChangeInterval === 0) {
-            oldFilmFilter.seed = minSeed + Math.random() * (maxSeed - minSeed);
-        }
+      if (frameCounter % seedChangeInterval === 0) {
+          oldFilmFilter.seed = minSeed + Math.random() * (maxSeed - minSeed);
+      }
 
-        if (isHovered) {
-            shockWaveFilter.time += delta * 0.02;
-            oldFilmFilter.sepia = 0;
-            oldFilmFilter.noiseSize = 0;
-            if (shockWaveFilter.time > 5) {
+      if (isHovered) {
+          shockWaveFilter.time += delta * 0.02;
+          oldFilmFilter.sepia -= delta * 0.015;
+          oldFilmFilter.sepia = Math.max(oldFilmFilter.sepia, 0);
+          oldFilmFilter.noiseSize = 0;
+
+          if (shockWaveFilter.time > 5) {
               shockWaveFilter.time = 0;
-            }
-        }
-    });
+          }
+      } else {
+          oldFilmFilter.sepia += delta * 0.015;
+          oldFilmFilter.sepia = Math.min(oldFilmFilter.sepia, 0.4);
+      }
+  });
 
 });
 
