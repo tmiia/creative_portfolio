@@ -11,3 +11,18 @@
 
   }
 }
+
+
+.canvas-container {
+  z-index: 0;
+  // width: 100%;
+  // height: 250px;
+  position: relative;
+  background-color: $background-dark;
+  outline: pxToRem(11) solid $background-light;
+  cursor: pointer;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+}
