@@ -32,6 +32,19 @@
       pxToRem(10) pxToRem(0) 0 $background-light,
       pxToRem(0) pxToRem(10) 0 $background-light,
       pxToRem(-5) pxToRem(0) 0 $background-light;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 80%);
+        pointer-events: none;
+        mix-blend-mode: lighten;
+        transition: background 0.1s;
+      }
     }
 
     .special-subtitle{
