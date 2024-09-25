@@ -74,6 +74,7 @@
     .logo{
       margin-top: $spacing-xl;
       width: clamp(pxToRem(14), 4vw, pxToRem(64));
+      opacity: 0;
     }
 
     .name{

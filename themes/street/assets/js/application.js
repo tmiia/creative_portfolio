@@ -2,26 +2,95 @@ gsap.registerPlugin(ScrollTrigger);
 
 window.onload = () => {
 
-  toggleFocus();
+  const elementsToAnimate = [
+    ".special-subtitle",
+    ".firstname",
+    ".lastname"
+  ];
 
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    direction: 'vertical',
-    gestureDirection: 'vertical',
-    smooth: true,
-    mouseMultiplier: 1,
-    smoothTouch: false,
-    touchMultiplier: 2,
-    infinite: false,
-  })
+  const elementsToShow = [
+    ".special-title",
+    ".job-details"
+  ];
 
-  function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf)
-  }
+  const horizontalElements = [
+    ".top",
+    ".middle",
+    ".bottom"
+  ];
 
-  requestAnimationFrame(raf)
+  // Intro Animation
+
+  gsap.set(".portfolio section", { yPercent: 100, opacity: 0 });
+  gsap.set(elementsToAnimate, { opacity: 0, yPercent: 100 });
+  gsap.set(elementsToShow, { opacity: 0 });
+  gsap.set(horizontalElements, { opacity: 0, xPercent: -100 });
+
+  const intro =  gsap.timeline({
+    defaults: {ease: "power2.inOut"},
+    duration: 2,
+    onComplete: setupSite,
+  });
+
+  intro
+        .to(".special-title", {
+          opacity: 1,
+        })
+        .to(".special-subtitle", {
+          opacity: 1,
+          yPercent: 0,
+          duration: .3
+        }, "<")
+        .to(".firstname", {
+          opacity: 1,
+          yPercent: 0
+        })
+        .to(".lastname", {
+          opacity: 1,
+          yPercent: 0,
+          duration: .3
+        }, "<")
+        .to(".job-details", {
+          opacity: 1,
+        }, "<")
+        .to(".middle", {
+          opacity: 1,
+          xPercent: 0,
+          duration: .3
+        }, "<")
+        .to(".top", {
+          opacity: 1,
+          xPercent: 0,
+          duration: .3
+        }, "-=0.15")
+        .to(".bottom", {
+          opacity: 1,
+          xPercent: 0,
+          duration: .3
+        }, "-=0.25");
+
+
+
+  // Scroll Horizontal
+
+  // const lenis = new Lenis({
+  //   duration: 1.2,
+  //   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  //   direction: 'vertical',
+  //   gestureDirection: 'vertical',
+  //   smooth: true,
+  //   mouseMultiplier: 1,
+  //   smoothTouch: false,
+  //   touchMultiplier: 2,
+  //   infinite: false,
+  // })
+
+  // function raf(time) {
+  //   lenis.raf(time)
+  //   requestAnimationFrame(raf)
+  // }
+
+  // requestAnimationFrame(raf)
 
   const slider = document.querySelector('.slider');
   const sections = gsap.utils.toArray('.slider section');
@@ -34,7 +103,7 @@ window.onload = () => {
       start: "top top",
       pin: true,
       scrub: 2,
-      snap: 1 / (sections.length - 1),
+      // snap: 1 / (sections.length - 1),
       end: () => "+=" + slider.offsetWidth,
       onEnter: toggleFocus,
     }
@@ -46,7 +115,7 @@ window.onload = () => {
     onLeaveBack: toggleFocus
   });
 
-  lenis.on('scroll', ScrollTrigger.update);
+  // lenis.on('scroll', ScrollTrigger.update);
 
 
   // Canvas Anim
@@ -155,4 +224,21 @@ function createFilters() {
   const bnwFilter = new PIXI.filters.HslAdjustmentFilter();
 
   return { oldFilmFilter, shockWaveFilter, bnwFilter };
+}
+
+function setupSite() {
+  toggleFocus()
+
+  gsap.to(".logo", {
+    opacity: 1,
+    delay: 0.25,
+    duration: .5,
+    ease: "power2.inOut"
+  });
+
+  gsap.to(".portfolio section", {
+    opacity: 1,
+    yPercent: 0,
+    delay: 0.15,
+  });
 }
