@@ -46,7 +46,11 @@
           <section>
             <div class="inner">
               <div class="content project">
-                <div class="canvas-container" data-image="{{ .Params.image }}"></div>
+                <div class="canvas-container" data-image="{{ .Params.image }}">
+                  <a href="{{ .Params.link }}" target="_blank" class="project__btn">
+                    <img src="/media/icons/arrow-up-right.svg" alt="arrow up right - link to website">
+                  </a>
+                </div>
                 <div class="text-content">
                   <h2 class="project__title">{{ .Title }}</h2>
                   <p class="project__description">{{ .Params.description }}</p>

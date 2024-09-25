@@ -10,6 +10,31 @@
     width: calc(100% + #{$spacing-md});
     padding: $spacing-sm $spacing-lg 0 0;
   }
+
+  &__btn{
+    position: absolute;
+    top: pxToRem(20);
+    right: pxToRem(20);
+    padding: $spacing-xs;
+    border-radius: pxToRem(20);
+    background-color: $background-light;
+    transition: .3s ease-in-out;
+
+    img{
+      width: pxToRem(18);
+      transform: rotate(45deg);
+      transition: transform .3s ease-in-out;
+    }
+
+    &:hover{
+      opacity: 0.8;
+      scale: 1.15;
+      img{
+        width: pxToRem(18);
+        transform: rotate(0deg);
+      }
+    }
+  }
 }
 
 
@@ -18,7 +43,6 @@
   height: fit-content;
   position: relative;
   outline: pxToRem(11) solid $background-light;
-  cursor: pointer;
 }
 canvas {
   width: 100%;
