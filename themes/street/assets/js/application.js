@@ -21,7 +21,7 @@ window.onload = () => {
 
   // Intro Animation
 
-  gsap.set(".portfolio section", { yPercent: 100, opacity: 0 });
+  gsap.set(".portfolio section", { yPercent: 20, opacity: 0 });
   gsap.set(elementsToAnimate, { opacity: 0, yPercent: 100 });
   gsap.set(elementsToShow, { opacity: 0 });
   gsap.set(horizontalElements, { opacity: 0, xPercent: -100 });
@@ -33,8 +33,14 @@ window.onload = () => {
   });
 
   intro
+        .to(".intro", {
+          scale: 0,
+          display:"none",
+          duration: .2
+        })
         .to(".special-title", {
           opacity: 1,
+          delay: 0.2
         })
         .to(".special-subtitle", {
           opacity: 1,
@@ -73,25 +79,6 @@ window.onload = () => {
 
   // Scroll Horizontal
 
-  // const lenis = new Lenis({
-  //   duration: 1.2,
-  //   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  //   direction: 'vertical',
-  //   gestureDirection: 'vertical',
-  //   smooth: true,
-  //   mouseMultiplier: 1,
-  //   smoothTouch: false,
-  //   touchMultiplier: 2,
-  //   infinite: false,
-  // })
-
-  // function raf(time) {
-  //   lenis.raf(time)
-  //   requestAnimationFrame(raf)
-  // }
-
-  // requestAnimationFrame(raf)
-
   const slider = document.querySelector('.slider');
   const sections = gsap.utils.toArray('.slider section');
 
@@ -103,7 +90,6 @@ window.onload = () => {
       start: "top top",
       pin: true,
       scrub: 2,
-      // snap: 1 / (sections.length - 1),
       end: () => "+=" + slider.offsetWidth,
       onEnter: toggleFocus,
     }
@@ -114,9 +100,6 @@ window.onload = () => {
     start: "bottom center",
     onLeaveBack: toggleFocus
   });
-
-  // lenis.on('scroll', ScrollTrigger.update);
-
 
   // Canvas Anim
 
@@ -240,5 +223,7 @@ function setupSite() {
     opacity: 1,
     yPercent: 0,
     delay: 0.15,
+    duration: .7,
+    ease: "power2.inOut"
   });
 }

@@ -1,0 +1,19 @@
+.intro{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: $f-size-xxxl;
+  font-family: $f-family-secondary;
+  font-weight: normal;
+  animation: loader 1s alternate-reverse infinite ease-in-out;
+}
+
+@keyframes loader {
+  0%{
+    opacity: 0.4;
+  }
+  100%{
+    opacity: 0.8;
+  }
+}
