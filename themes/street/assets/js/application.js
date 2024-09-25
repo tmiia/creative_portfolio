@@ -25,6 +25,7 @@ window.onload = () => {
   gsap.set(elementsToAnimate, { opacity: 0, yPercent: 100 });
   gsap.set(elementsToShow, { opacity: 0 });
   gsap.set(horizontalElements, { opacity: 0, xPercent: -100 });
+  gsap.set(".focus__container", { zIndex: 3000 });
 
   const intro =  gsap.timeline({
     defaults: {ease: "power2.inOut"},
@@ -33,14 +34,16 @@ window.onload = () => {
   });
 
   intro
-        .to(".intro", {
-          scale: 0,
+        .to(".loader", {
+          opacity: 0,
           display:"none",
-          duration: .2
         })
+        .to(".focus__container",{
+          zIndex: -1
+        }, "<")
         .to(".special-title", {
           opacity: 1,
-          delay: 0.2
+          delay: 0.3
         })
         .to(".special-subtitle", {
           opacity: 1,
