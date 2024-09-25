@@ -83,7 +83,7 @@ window.onload = () => {
   const sections = gsap.utils.toArray('.slider section');
 
   gsap.to(sections, {
-    xPercent: -130 * (sections.length - 1),
+    xPercent: -70 * (sections.length + 1),
     ease: "none",
     scrollTrigger: {
       trigger: '.portfolio',

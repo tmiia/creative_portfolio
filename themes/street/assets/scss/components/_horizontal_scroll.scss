@@ -8,11 +8,11 @@
 
 .slider{
   display: flex;
-  width: 200vw;
+  width: fit-content;
 
   section{
     height: 100vh;
-    width: 50%;
+    width: calc(100vw / 2);
     padding: $spacing-huge;
 
     .inner{
