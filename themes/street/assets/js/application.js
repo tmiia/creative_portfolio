@@ -85,15 +85,17 @@ window.onload = () => {
   const slider = document.querySelector('.slider');
   const sections = gsap.utils.toArray('.slider section');
 
+  console.log(slider.offsetWidth);
+
   gsap.to(sections, {
-    xPercent: -70 * (sections.length + 1),
+    xPercent: -100 * (sections.length + 4),
     ease: "none",
     scrollTrigger: {
       trigger: '.portfolio',
       start: "top top",
       pin: true,
       scrub: 2,
-      end: () => "+=" + slider.offsetWidth,
+      end: () => "+=" + (slider.offsetWidth),
       onEnter: toggleFocus,
     }
   });
