@@ -181,15 +181,6 @@ window.onload = () => {
           }
       });
   });
-
-  new Magnet({
-    target: ".logo",
-  });
-
-  new Magnet({
-    target: ".middle",
-  });
-
 };
 
 // Focus
@@ -238,106 +229,6 @@ function setupSite() {
     duration: .7,
     ease: "power2.inOut"
   });
-}
-
-
-class Magnet {
-  constructor({ target, magText }) {
-    this.element = target.nodeType ? target : document.querySelector(target);
-    this.magText = magText ? magText : false;
-
-    this.init();
-    this.addListeners();
-    this.xTo = gsap.quickTo(this.element, "x")
-    this.yTo = gsap.quickTo(this.element, "y")
-  }
-
-  magnetize(val) {
-    const dist = gsap.utils.normalize(0, this.dimensions.width, Math.abs(val));
-    const interp = gsap.utils.interpolate([1, 0.4, 0], dist);
-    return interp;
-  }
-
-  calcFactor(val) {
-    gsap.utils.mapRange(10, 170, 0.8, 1.75, gsap.utils.clamp(10, 170, val));
-  }
-
-  init() {
-    if (this.magText) {
-      this.text = document.createElement("span");
-      this.text.innerText = this.element.innerText;
-      this.element.innerHTML = "";
-      this.element.insertAdjacentElement("afterbegin", this.text);
-      gsap.set(this.text, {
-        pointerEvents: "none",
-        display: "block"
-      });
-    }
-    this.dimensions = this.element.getBoundingClientRect();
-    document.addEventListener("mousemove", (e) => {
-      this.mousePosition = { x: e.pageX, y: e.pageY };
-    });
-  }
-
-  resize() {
-    this.dimensions = this.element.getBoundingClientRect();
-  }
-
-  addListeners() {
-    window.addEventListener("resize", () => {
-      this.resize();
-    })
-    const { element, text } = this;
-
-
-    const moveEvent = (e) => {
-      const { left, top, width, height } = this.dimensions;
-      const { mousePosition } = this;
-      const relX = mousePosition.x - left - width / 2;
-      const relY = mousePosition.y - top - height / 2;
-      const moveX = this.magnetize(relX);
-      const moveY = this.magnetize(relY);
-
-      gsap.to(element, {
-          x: moveX * relX,
-          y: moveY * relY
-        });
-
-      if (text) {
-        gsap.to(text, {
-          x: moveX * relX * 0.3,
-          y: moveY * relY * 0.2
-        });
-      }
-    };
-    const leaveEvent = (e) => {
-      const { left, top, width, height } = this.dimensions;
-      const { mousePosition } = this;
-      const relX = mousePosition.x - left - width / 2;
-      const relY = mousePosition.y - top - height / 2;
-
-      const dist = Math.sqrt(Math.pow(relX, 2) + Math.pow(relY, 2));
-
-      const factor = this.calcFactor(dist);
-      gsap.to(element, {
-        x: 0,
-        y: 0,
-        ease: `elastic.out(${factor}, 0.5)`,
-        duration: 1
-      });
-      if (text) {
-        gsap.to(text, {
-          x: 0,
-          y: 0,
-          ease: `elastic.out(${factor}, 0.5)`,
-          duration: 1
-        });
-      }
-    };
-
-    element.addEventListener("mousemove", moveEvent);
-    element.addEventListener("mouseleave", leaveEvent);
-  }
 }
 
 // Mouse Light
