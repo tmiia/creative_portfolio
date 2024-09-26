@@ -36,3 +36,12 @@
     }
   }
 }
+
+
+
+
+@media only screen and (max-width: 768px) {
+  .portfolio {
+    display: none !important;
+  }
+}

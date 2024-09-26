@@ -22,7 +22,7 @@ $f-size-lg: clamp(pxToRem(16), 3vw, pxToRem(20));
 $f-size-xl: clamp(pxToRem(18), 4vw, pxToRem(24));
 $f-size-xxl: clamp(pxToRem(20), 5vw, pxToRem(32));
 $f-size-xxxl: clamp(pxToRem(24), 6vw, pxToRem(64));
-$f-size-huge: clamp(pxToRem(32), 10vw, pxToRem(160));
+$f-size-huge: clamp(pxToRem(64), 10vw, pxToRem(160));
 
 // Line Height
 $line-h-special: 0.9em;

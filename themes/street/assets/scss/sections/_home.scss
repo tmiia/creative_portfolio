@@ -147,3 +147,26 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 768px) {
+  .home {
+    height: calc(#{$full-v-h} - 128px) !important;
+    align-items: center;
+
+    &__content-container{
+      height: calc(#{$full-v-h} - 128px);
+
+      .home__titles{
+        flex: 1;
+        justify-content: end;
+      }
+      .home__content{
+        flex: 1;
+        .name{
+          margin-top: auto;
+        }
+      }
+    }
+  }
+}
