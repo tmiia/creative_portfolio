@@ -13,6 +13,14 @@ $border-size : pxToRem(3);
     min-height: $full-v-h;
     min-width: $full-v-w;
     padding: $spacing-huge;
+
+    .svg-path{
+      position: fixed;
+      top: 64px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(3);
+      transition: .8s $ease-gentle;
+    }
   }
 
   &__area{
@@ -22,21 +30,32 @@ $border-size : pxToRem(3);
     transform-origin: center;
     transition: .8s $ease-gentle;
 
-    &::after{
-      content: "";
-      position: absolute;
-      top: 65%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% + #{$border-size} * 9);
-      height: pxToRem(150);
-      background-color: $background-light;
-    }
+    // &::after{
+    //   content: "";
+    //   position: absolute;
+    //   top: 65%;
+    //   left: 50%;
+    //   transform: translateX(-50%);
+    //   width: calc(100% + #{$border-size} * 9);
+    //   height: pxToRem(150);
+    //   background-color: $background-light;
+    // }
 
     &.active{
       border-left: calc(#{$border-size} * 3) solid $primary-color;
       border-right: calc(#{$border-size} * 3) solid $primary-color;
       transform: scaleX(0.33);
+
+      &+.svg-path{
+        transform: translateX(-50%) scaleX(1);
+        transition: .8s $ease-gentle;
+
+        &+.svg-path{
+          transform: translateX(-50%) scaleX(1);
+          transition: .8s $ease-gentle;
+        }
+      }
     }
+
   }
 }

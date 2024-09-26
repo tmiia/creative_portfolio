@@ -1,6 +1,16 @@
 {{ define "main" }}
   <section class="focus__container">
       <div class="focus__area"></div>
+
+      <svg width="434" height="85vh" viewBox="0 0 434 703" class="svg-path" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 569.5V703L434 702V0.5H1V569" class="path" stroke="transparent"/>
+        <rect class="empty" x="2" y="2" width="151" height="151" class="empty" fill="#F5F3F1"/>
+      </svg>
+
+      <svg width="434" height="85vh" viewBox="0 0 434 703" class="svg-path" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M434 568.5V0.5H1V703L434 702V569.5" class="path2" stroke="transparent"/>
+        <rect x="2" y="2" width="151" height="151" class="empty2" fill="#F5F3F1"/>
+      </svg>
   </section>
 
   <div class="loader">
@@ -65,4 +75,41 @@
       </div>
     </section>
   </div>
+
+  <script>
+      const path = document.querySelector('.path');
+      const empty = document.querySelector('.empty');
+
+      const path2 = document.querySelector('.path2');
+      const empty2 = document.querySelector('.empty2');
+
+      const val = { distance: 0 };
+      const val2 = { distance: 0 };
+
+      gsap.to(val, {
+        distance: path.getTotalLength(),
+        repeat: -1,
+        duration: 15,
+        ease: "expo.out",
+
+        onUpdate: () => {
+          const point = path.getPointAtLength(val.distance);
+          empty.setAttribute('x', point.x - 75.5);
+          empty.setAttribute('y', point.y - 75.5);
+        }
+      });
+
+      gsap.to(val2, {
+        distance: path2.getTotalLength(),
+        repeat: -1,
+        duration: 15,
+        ease: "expo.out",
+
+        onUpdate: () => {
+          const point2 = path2.getPointAtLength(val2.distance);
+          empty2.setAttribute('x', point2.x - 75.5);
+          empty2.setAttribute('y', point2.y - 75.5);
+        }
+      });
+  </script>
 {{ end }}
