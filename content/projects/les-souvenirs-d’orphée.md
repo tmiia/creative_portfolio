@@ -1,12 +1,11 @@
 ---
 title: Les souvenirs d’Orphée
 description: >-
-  Concevoir un jeu avec Unity était la consigne lors de ce projet universitaire.
-  Nous étions deux développeuses sur ce projet où on découvrait la programmation
-  orienté object en C# sur Unity.
+  Designing a game with Unity was the brief for this university project. There
+  were two of us developers on this project, discovering object-oriented
+  programming in C# on Unity.
 
-
-  J’ai donc géré les interactions entre le personnage et les éléments collectables dans le jeu. J’ai eu à gérer l’ajout d’objet dans l’inventaire et les conditions pour ajouter une vie.
+  I was responsible for managing the interactions between the character and the collectable elements in the game. I was also responsible for managing the addition of items to the inventory and the conditions for adding vitality points.
 image: /images/uploads/project_4.webp
 link: https://souvenirsdorphee.netlify.app/
 date: 2024-09-22T23:01:00.000Z
